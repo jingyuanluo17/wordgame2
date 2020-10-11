@@ -7,5 +7,31 @@
     </head>
     <body>
         <h1>Welcome To Super Text Twist</h1>
+        <script>
+var firebaseConfig = {
+    apiKey: "AIzaSyAAI0Vyl16fL06MgE3nb_MU31kMqGnS3Q4",
+    authDomain: "texttwist-8c4c4.firebaseapp.com",
+    databaseURL: "https://texttwist-8c4c4.firebaseio.com",
+    projectId: "texttwist-8c4c4",
+    storageBucket: "texttwist-8c4c4.appspot.com",
+    messagingSenderId: "728906132893",
+    appId: "1:728906132893:web:83149a794a1bd77539d374",
+    measurementId: "G-BKWYK7VDQ7"
+  };
+// Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  
+
+let myDatabase = firebase.database();
+myDatabase.ref("dictionary").child("numstarters").once('value',ss=>{
+  let rackcount = parseInt(ss.val());
+  let randomrack = parseInt(Math.floor(rackcount * Math.random()));
+  
+  myDatabase.ref("dictionary").child("starters").child(randomrack).once('value', ss2=>{
+  alert(ss2.val());
+  });
+  
+})
+        </script>
     </body>
 </html>
